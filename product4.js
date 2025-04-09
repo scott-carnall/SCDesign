@@ -1,0 +1,83 @@
+const basePrice = 0.00; // Base price for the cushion
+const insertPriceYes = 10.00; // Price for including the insert
+const insertPriceNo = 6.00;  // Price for no insert
+
+document.addEventListener('DOMContentLoaded', () => {
+  const surnameInput = document.getElementById('surname-input');
+  const customNumberInput = document.getElementById('custom-number');
+  const insertSelect = document.getElementById('insert-option');
+  const priceDisplay = document.getElementById('price-display');
+  const addToCartBtn = document.getElementById('add-to-cart-btn');
+
+  // Function to update the price based on insert selection
+  function updatePrice() {
+    const insertOption = insertSelect.value;
+    let price = basePrice;
+    
+    if (insertOption === 'yes') {
+      price += insertPriceYes;
+    } else {
+      price += insertPriceNo;
+    }
+
+    priceDisplay.textContent = `£${price.toFixed(2)}`;
+  }
+
+  // Add to cart functionality
+  function addToCart() {
+    const surname = surnameInput.value;
+    const customNumber = customNumberInput.value;
+    const insertOption = insertSelect.value;
+    let price = basePrice;
+
+    // Adjust the price based on the insert selection
+    if (insertOption === 'yes') {
+      price += insertPriceYes;
+    } else {
+      price += insertPriceNo;
+    }
+
+    const image = 'images/Pillow.png';
+
+    // Validate input (surname cannot be empty, custom number must be a valid number <= 2 digits)
+    if (!surname || customNumber.length > 2 || isNaN(customNumber)) {
+      alert('Please enter a valid surname and a maximum of 2 digits for the number.');
+      return;
+    }
+
+    const item = {
+      name: 'Cushion',
+      surname,
+      customNumber,
+      insertOption,
+      price,
+      image,
+      quantity: 1
+    };
+
+    // Get cart from localStorage
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push(item);
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    alert('Cushion added to cart!');
+    updateCartCount();
+  }
+
+  // Update cart count in the header
+  function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const countEl = document.getElementById('cart-count-number');
+    if (countEl) countEl.textContent = cart.length;
+  }
+
+  // Event listener to dynamically update price when Insert option is changed
+  insertSelect.addEventListener('change', updatePrice);
+
+  // Event listener to handle Add to Cart button click
+  addToCartBtn.addEventListener('click', addToCart);
+
+  // Initialize the price display
+  updatePrice();
+  updateCartCount();
+});

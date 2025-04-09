@@ -1,0 +1,173 @@
+<script>
+  const blanketPrices = {
+    quackattack: {
+      small: 13.00,
+      medium: 15.00,
+      large: 18.00
+    },
+    dark: {
+      small: 13.00,
+      medium: 15.00,
+      large: 18.00
+    },
+    stickerbomb: {
+      small: 13.00,
+      medium: 15.00,
+      large: 18.00
+    }
+  };
+
+  const designSelect = document.getElementById('design-select');
+  const sizeSelect = document.getElementById('size-select');
+  const priceDisplay = document.getElementById('price-display');
+
+  function updatePrice() {
+    const design = designSelect.value;
+    const size = sizeSelect.value;
+    const price = blanketPrices[design][size];
+    priceDisplay.textContent = `$${price.toFixed(2)}`;
+  }
+
+  designSelect.addEventListener('change', updatePrice);
+  sizeSelect.addEventListener('change', updatePrice);
+
+  // Run once on page load
+  updatePrice();
+
+function updatePriceAndImage() {
+    const design = designSelect.value;
+    const size = sizeSelect.value;
+    const price = blanketPrices[design][size];
+    priceDisplay.textContent = `£${price.toFixed(2)}`;
+    mainImage.src = designToImage[design];
+  }
+
+  // Event listeners for design and size dropdown changes
+  designSelect.addEventListener('change', updatePriceAndImage);
+  sizeSelect.addEventListener('change', updatePriceAndImage);
+
+  function addToCart() {
+  const design = document.getElementById('design-select').value;
+  const size = document.getElementById('size-select').value;
+  const price = getProductPrice(design, size);
+
+  const designImages = {
+    quackattack: 'images/quackattack.png',
+    dark: 'images/dark.png',
+    stickerbomb: 'images/stickerbomb.png'
+  };
+
+  const image = designImages[design] || 'images/quackattack.png'; // fallback image
+
+  const item = {
+    name: 'Blanket',
+    design,
+    size,
+    price,
+    image
+  };
+
+  const cart = getCart();
+  cart.push(item);
+  localStorage.setItem('cart', JSON.stringify(cart));
+
+  updateCartCount();
+  alert(`${item.name} added to cart!`);
+}
+
+  
+   // Images associated with each design
+  const designToImage = {
+    quackattack: 'images/quackattack.png',
+    dark: 'images/dark.png',
+    stickerbomb: 'images/stickerbomb.png'
+  };
+
+  const designSelect = document.getElementById('design-select');
+  const sizeSelect = document.getElementById('size-select');
+  const priceDisplay = document.getElementById('price-display');
+  const mainImage = document.getElementById('mainImage');
+</script>
+
+
+<script>
+  // Prices for each design and size
+  const blanketPrices = {
+    quackattack: {
+      small: 13.00,
+      medium: 15.00,
+      large: 18.00
+    },
+    dark: {
+      small: 13.00,
+      medium: 15.00,
+      large: 18.00
+    },
+    stickerbomb: {
+      small: 13.00,
+      medium: 15.00,
+      large: 18.00
+    }
+  };
+
+  // Images associated with each design
+  const designToImage = {
+    quackattack: 'images/quackattack.png',
+    dark: 'images/dark.png',
+    stickerbomb: 'images/stickerbomb.png'
+  };
+
+  const designSelect = document.getElementById('design-select');
+  const sizeSelect = document.getElementById('size-select');
+  const priceDisplay = document.getElementById('price-display');
+  const mainImage = document.getElementById('mainImage');
+
+  // Update price and main image based on design and size
+  function updatePriceAndImage() {
+    const design = designSelect.value;
+    const size = sizeSelect.value;
+    const price = blanketPrices[design][size];
+    priceDisplay.textContent = `£${price.toFixed(2)}`;
+    mainImage.src = designToImage[design];
+  }
+
+  // Event listeners for design and size dropdown changes
+  designSelect.addEventListener('change', updatePriceAndImage);
+  sizeSelect.addEventListener('change', updatePriceAndImage);
+
+  // Run once on page load
+  updatePriceAndImage();
+
+  // Add selected product to cart
+function addToCart() {
+  const design = document.getElementById('design-select').value;
+  const size = document.getElementById('size-select').value;
+  const price = getProductPrice(design, size);
+
+  const designImages = {
+    quackattack: 'images/quackattack.png',
+    dark: 'images/dark.png',
+    stickerbomb: 'images/stickerbomb.png'
+  };
+
+  const image = designImages[design] || 'images/quackattack.png'; // fallback image
+
+  const item = {
+    name: 'Blanket',
+    design,
+    size,
+    price,
+    image
+  };
+
+  const cart = getCart();
+  cart.push(item);
+  localStorage.setItem('cart', JSON.stringify(cart));
+
+console.log(item);
+
+  updateCartCount();
+  alert(`${item.name} added to cart!`);
+}
+
+</script>

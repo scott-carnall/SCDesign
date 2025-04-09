@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Slides - SC Design</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="product3.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <a href="index.html">
+        <img src="images/SCDesign.png" alt="SC Design Logo" class="logo"
+             onerror="this.style.display='none'; this.parentElement.innerHTML='SC Design Store';" />
+      </a>
+    </div>
+
+    <a href="cart.html" id="cart-count-link">
+      <div id="cart-icon">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="cart-count-number">0</span>
+      </div>
+    </a>
+  </header>
+
+  <main class="product-page">
+    <div class="product-image">
+      <img id="mainImage" src="images/Ducks Slides.png" alt="Ducks Slides Image" />
+    </div>
+
+    <div class="product-options">
+      <h2 class="product-title">Slides</h2>
+
+      <label for="size-select">Size:</label>
+      <select id="size-select">
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="5.5">5.5</option>
+        <option value="6.5">6.5</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="8.5">8.5</option>
+        <option value="9.5">9.5</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="12.5">12.5</option>
+        <option value="13.5">13.5</option>
+      </select>
+
+      <label for="custom-text">Enter Number:</label>
+      <input type="text" id="custom-text" maxlength="2" pattern="[0-9]{1,2}" placeholder="Enter 2 digits" />
+
+      <p id="price-display">£0.00</p>
+      <button id="add-to-cart-btn">Add to Cart</button>
+    </div>
+  </main>
+</body>
+</html>

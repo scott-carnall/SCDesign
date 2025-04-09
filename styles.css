@@ -1,0 +1,281 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f7f7f7;
+  color: #333;
+}
+
+header {
+  background: linear-gradient(to bottom, #ffc602, #127115);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.product-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  text-decoration: none;
+  color: inherit;
+}
+
+.product-card:hover {
+  transform: scale(1.03);
+}
+
+.product-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.product-info {
+  padding: 15px;
+}
+
+.product-title {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.product-page {
+  display: flex;
+  gap: 40px;
+  padding: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.product-image img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+
+
+.product-options {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.product-options select,
+.product-options button {
+  padding: 10px;
+  font-size: 1rem;
+  width: 200px;
+}
+
+#cart-count {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #127115;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+}
+.cart-list {
+  max-width: 800px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+.cart-item button {
+  background: #ff4b4b;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.thumbnail-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.thumbnail {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border 0.2s;
+}
+
+.thumbnail:hover {
+  border: 2px solid #127115;
+}
+
+header {
+  position: relative;
+  background: linear-gradient(to bottom, #ffc602, #127115);
+  color: #fff;
+  padding: 20px 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px; /* Ensures consistent vertical alignment */
+}
+
+.header-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  height: 80px;
+  width: auto;
+  display: block;
+}
+
+#cart-count-link {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  text-decoration: none;
+}
+
+#cart-icon {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #127115;
+  padding: 8px 12px;
+  border-radius: 20px;
+  color: white;
+  font-size: 18px;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+#cart-icon:hover {
+  background: #0f5a10;
+  transform: scale(1.1) rotate(-5deg);
+}
+
+#cart-count-number {
+  font-weight: bold;
+}
+
+.header-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  height: 100px; /* Fixed height */
+  width: auto;  /* Maintain aspect ratio */
+  display: block;
+}
+@media (max-width: 768px) {
+  .logo {
+    height: 60px; /* still smaller for mobile */
+  }
+}
+
+/* Cart Styles */
+.cart-container {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cart-item {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  background: #fff;
+  border-radius: 8px;
+  padding: 15px;
+  border: 1px solid #ccc;
+}
+
+.cart-item-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.cart-item-details {
+  flex: 1;
+  font-size: 14px;
+}
+
+.cart-item button {
+  background: crimson;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.cart-item button:hover {
+  background: darkred;
+}
+
+.cart-total {
+  text-align: right;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+  padding: 0 30px;
+}
+
+/* PayPal */
+#paypal-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  width: 100%; /* Ensure it spans the width of the container */
+}
+
+body.cart-page #cart-count-link {
+  display: none;
+}
+
+.product-title {
+  font-size: 36px; /* Adjust the font size as needed */
+  font-weight: bold;
+  background: linear-gradient(to right, #ffc602, #127115); /* Gradient from left to right */
+  -webkit-background-clip: text; /* Clip the background to text */
+  color: transparent; /* Make the text itself transparent to show the gradient */
+  text-align: center; /* Center the text */
+  margin: 20px 0; /* Adjust spacing if needed */
+}
+

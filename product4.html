@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cushions - SC Design</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="product4.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <a href="index.html">
+        <img src="images/SCDesign.png" alt="SC Design Logo" class="logo"
+             onerror="this.style.display='none'; this.parentElement.innerHTML='SC Design Store';" />
+      </a>
+    </div>
+
+    <a href="cart.html" id="cart-count-link">
+      <div id="cart-icon">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="cart-count-number">0</span>
+      </div>
+    </a>
+  </header>
+
+  <main class="product-page">
+    <div class="product-image">
+      <img id="mainImage" src="images/Pillow.png" alt="Ducks Pillow Image" />
+    </div>
+
+    <div class="product-options">
+      <h2 class="product-title">Cushion</h2>
+
+      <label for="surname-input">Surname:</label>
+      <input type="text" id="surname-input" placeholder="Enter surname" />
+
+      <label for="custom-number">Enter Number (max 2 digits):</label>
+      <input type="text" id="custom-number" maxlength="2" pattern="[0-9]{1,2}" placeholder="Enter 2 digits" />
+
+      <label for="insert-option">Include Insert:</label>
+      <select id="insert-option">
+        <option value="no">No</option>
+        <option value="yes">Yes</option>
+      </select>
+
+      <p id="price-display">£0.00</p>
+      <button id="add-to-cart-btn">Add to Cart</button>
+    </div>
+  </main>
+</body>
+</html>
