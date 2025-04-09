@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Cart</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+</head>
+<body class="cart-page">
+  	<header>
+	  <div class="header-left">
+		<a href="index.html">
+		  <img src="images/SCDesign.png" alt="SC Design Logo" class="logo" onerror="this.style.display='none'; this.parentElement.innerHTML='SC Design Store';" />
+		</a>
+	  </div>
+				<a href="cart.html" id="cart-count-link">
+			  <div id="cart-icon">
+				<i class="fas fa-shopping-cart"></i>
+				<span id="cart-count-number">0</span>
+			  </div>
+			</a>
+	  </a>
+</header>
+
+  <main>
+    <h2>Your Cart</h2>
+    <div id="cart-items" class="cart-container"></div>
+    <div id="cart-total" class="cart-total"></div>
+    <div id="paypal-button-container" style="margin-top: 20px;"></div>
+  </main>
+
+  <script src="cart.js" defer></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=GBP"></script>
+</body>
+
+</html>

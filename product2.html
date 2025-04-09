@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Custom Top - SC Design</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="product2.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <header>
+  <div class="header-left">
+    <a href="index.html">
+      <img src="images/SCDesign.png" alt="SC Design Logo" class="logo" onerror="this.style.display='none'; this.parentElement.innerHTML='SC Design Store';" />
+    </a>
+  </div>
+			<a href="cart.html" id="cart-count-link">
+		  <div id="cart-icon">
+			<i class="fas fa-shopping-cart"></i>
+			<span id="cart-count-number">0</span>
+		  </div>
+		</a>
+  </a>
+</header>
+
+  <main class="product-page">
+    <div class="product-image">
+      <img id="mainImage" src="images/Desk.png" alt="Main Image" />
+    </div>
+
+    <div class="product-options">
+      <h2 class="product-title">Deskpad</h2>
+
+      <label for="size-select">Size:</label>
+      <select id="size-select">
+        <option value="small">30x25</option>
+        <option value="medium">60x30</option>
+        <option value="large">80x40</option>
+		<option value="xlarge">90x40</option>
+      </select>
+
+      <p id="price-display">£0.00</p>
+      <button id="add-to-cart-btn">Add to Cart</button>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Visor Towels - SC Design</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="product5.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <a href="index.html">
+        <img src="images/SCDesign.png" alt="SC Design Logo" class="logo" onerror="this.style.display='none'; this.parentElement.innerHTML='SC Design Store';" />
+      </a>
+    </div>
+    <a href="cart.html" id="cart-count-link">
+      <div id="cart-icon">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="cart-count-number">0</span>
+      </div>
+    </a>
+  </header>
+
+  <main class="product-page">
+    <div class="product-image">
+      <img id="mainImage" src="images/visortowel.png" alt="Main Image" />
+      <div class="thumbnail-row">
+        <img class="thumbnail" src="images/visortowel.png" data-design="home" />
+        <img class="thumbnail" src="images/away.png" data-design="away" />
+        <img class="thumbnail" src="images/third.png" data-design="third" />
+      </div>
+    </div>
+
+    <div class="product-options">
+      <h2 class="product-title">Visor Towels</h2>
+
+      <label for="design-select">Design:</label>
+      <select id="design-select">
+        <option value="home">Home</option>
+        <option value="away">Away</option>
+        <option value="third">Third</option>
+      </select>
+
+      <label for="surname">Surname:</label>
+      <input type="text" id="surname" placeholder="Enter Surname" />
+
+      <label for="number">Number:</label>
+      <input type="text" id="number" placeholder="Enter Number" maxlength="2" />
+
+      <p id="price-display">£12.00</p>
+      <button id="add-to-cart-btn">Add to Cart</button>
+    </div>
+  </main>
+</body>
+</html>
