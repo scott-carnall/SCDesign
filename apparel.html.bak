@@ -2,9 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Phonecases - Cobracut x Ducks Store</title>
+  <title>Apparel -Cobracut x Ducks Store</title>
   <link rel="stylesheet" href="styles.css" />
-  <script src="product.js" defer></script>
+  <script defer>
+    document.addEventListener('DOMContentLoaded', () => {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const countEl = document.getElementById('cart-count-number');
+      if (countEl) countEl.textContent = cart.length;
+    });
+  </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
@@ -19,7 +25,7 @@
         <li><a href="index.html">Home</a></li>
 
         <li class="dropdown">
-          <a href="#">Apparel</a>
+          <a href="apparel.html">Apparel</a>
           <ul class="dropdown-menu">
             <li><a href="slides.html">Slides</a></li>
             <li><a href="ducks-hockey.html">Ducks Hockey</a></li>
@@ -68,44 +74,38 @@
 	
   </header>
 
-  <!-- Main -->
-  <main class="product-page">
-   <div class="product-image">
-      <img id="mainImage" src="images/phonecases.png" alt="Main Image" />
-      <div class="thumbnail-row">
-        <img class="thumbnail" src="images/stickerbombphone.png" alt="Stickerbomb Phone Case">
-        <img class="thumbnail" src="images/jersey.png" alt="Jersey Phone Case">
-      </div>
+
+<main>
+  <!-- Apparel Range -->
+  <section class="product-section">
+    <h2 class="section-title">Apparel Range</h2>
+    <div class="product-grid">
+      <a href="slides.html" class="product-card">
+        <img src="images/Ducks Slides.png" alt="Slides" class="product-image" />
+        <div class="product-info">
+          <div class="product-title">Slides</div>
+        </div>
+      </a>
+      <a href="ducks-hockey.html" class="product-card">
+        <img src="images/Ducks T-shirt.png" alt="Ducks Hockey" class="product-image" />
+        <div class="product-info">
+          <div class="product-title">Ducks Hockey</div>
+        </div>
+      </a>
+      <a href="rotherham-ducks.html" class="product-card">
+        <img src="images/rotherhamducks2.png" alt="Rotherham Ducks" class="product-image" />
+        <div class="product-info">
+          <div class="product-title">Rotherham Ducks</div>
+        </div>
+      </a>
+	  <a href="dducks.html" class="product-card">
+        <img src="images/dducks.png" alt="Rotherham Ducks" class="product-image" />
+        <div class="product-info">
+          <div class="product-title">D In Ducks</div>
+        </div>
+      </a>
     </div>
-
-    <div class="product-options">
-      <h1 class="product-title">Custom Phone Case</h1>
-      <p class="price">£8.00</p>
-
-      <label for="design">Design</label>
-      <select id="design">
-        <option value="Stickerbomb">Stickerbomb</option>
-        <option value="Jersey">Jersey</option>
-      </select>
-
-      <select id="brand">
-      <select id="brand" onchange="updatePhoneModels()">
-        <option value="" disabled selected>Select Brand</option>
-        <option value="Apple">Apple</option>
-        <option value="Samsung">Samsung</option>
-        <option value="Google">Google</option>
-      </select>
-
-      <label for="phone">Phone Model</label>
-      <select id="phone">
-        <option value="" disabled selected>Select Phone Model</option>
-      </select>
-
-      <button id="addToCartBtn">Add to Cart</button>
-    </div>
+  </section>
   </main>
-
-  <!-- JS -->
-  <script src="product6.js"></script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Deskpad - SC Design</title>
+  <title>Deskpad - Cobracut x Ducks Store</title>
   <link rel="stylesheet" href="styles.css" />
   <script src="product2.js" defer></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -11,7 +11,7 @@
   <header>
     <div class="header-left">
       <a href="index.html">
-        <img src="images/cobracut.png" alt="SC Design Logo" class="logo" />
+        <img src="images/Cross.png" alt="SC Design Logo" class="logo" />
       </a>
     </div>
 	<nav class="main-nav">
