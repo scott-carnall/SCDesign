@@ -11,7 +11,7 @@
   <header>
     <div class="header-left">
       <a href="index.html">
-        <img src="images/cobracut.png" alt="SC Design Logo" class="logo" />
+        <img src="images/Cross.png" alt="SC Design Logo" class="logo" />
       </a>
     </div>
 	<nav class="main-nav">
@@ -68,36 +68,44 @@
 	
   </header>
 
+  <!-- Main -->
   <main class="product-page">
-    <div class="product-image">
-      <img id="mainImage" src="images/quackattack.png" alt="Main Image" />
+   <div class="product-image">
+      <img id="mainImage" src="images/phonecases.png" alt="Main Image" />
       <div class="thumbnail-row">
-        <img class="thumbnail" src="images/quackattack.png" data-design="quackattack" />
-        <img class="thumbnail" src="images/dark.png" data-design="dark" />
-        <img class="thumbnail" src="images/stickerbomb.png" data-design="stickerbomb" />
+        <img class="thumbnail" src="images/stickerbombphone.png" alt="Stickerbomb Phone Case">
+        <img class="thumbnail" src="images/jersey.png" alt="Jersey Phone Case">
       </div>
     </div>
 
     <div class="product-options">
-      <h2 class="product-title">Custom Blanket</h2>
+      <h1 class="product-title">Custom Phone Case</h1>
+      <p class="price">£8.00</p>
 
-      <label for="design-select">Design:</label>
-      <select id="design-select">
-        <option value="quackattack">Quack Attack Is Back</option>
-        <option value="dark">Dark Design</option>
-        <option value="stickerbomb">StickerBomb</option>
+      <label for="design">Design</label>
+      <select id="design">
+        <option value="Stickerbomb">Stickerbomb</option>
+        <option value="Jersey">Jersey</option>
       </select>
 
-      <label for="size-select">Size:</label>
-      <select id="size-select">
-        <option value="small">Small</option>
-        <option value="medium">Medium</option>
-        <option value="large">Large</option>
+      <select id="brand">
+      <select id="brand" onchange="updatePhoneModels()">
+        <option value="" disabled selected>Select Brand</option>
+        <option value="Apple">Apple</option>
+        <option value="Samsung">Samsung</option>
+        <option value="Google">Google</option>
       </select>
 
-      <p id="price-display">£0.00</p>
-      <button id="add-to-cart-btn">Add to Cart</button>
+      <label for="phone">Phone Model</label>
+      <select id="phone">
+        <option value="" disabled selected>Select Phone Model</option>
+      </select>
+
+      <button id="addToCartBtn">Add to Cart</button>
     </div>
   </main>
+
+  <!-- JS -->
+  <script src="product6.js"></script>
 </body>
 </html>

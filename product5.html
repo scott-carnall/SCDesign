@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Visor Towels - SC Design</title>
+  <title>Visor Towel - SC Design</title>
   <link rel="stylesheet" href="styles.css" />
   <script src="product5.js" defer></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -11,44 +11,90 @@
   <header>
     <div class="header-left">
       <a href="index.html">
-        <img src="images/SCDesign.png" alt="SC Design Logo" class="logo" onerror="this.style.display='none'; this.parentElement.innerHTML='SC Design Store';" />
+        <img src="images/Cross.png" alt="SC Design Logo" class="logo" />
       </a>
     </div>
+	<nav class="main-nav">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+
+        <li class="dropdown">
+          <a href="#">Apparel</a>
+          <ul class="dropdown-menu">
+            <li><a href="product3.html">Slides</a></li>
+            <li><a href="ducks-hockey.html">Ducks Hockey</a></li>
+            <li><a href="rotherham-ducks.html">Rotherham Ducks</a></li>
+            <li><a href="d-logo.html">D-Logo</a></li>
+          </ul>
+        </li>
+
+        <li><a href="headwear.html">Headwear</a></li>
+
+        <li class="dropdown">
+          <a href="#">Accessories</a>
+          <ul class="dropdown-menu">
+            <li><a href="product2.html">Deskpads</a></li>
+            <li><a href="drinkswear.html">Drinkswear</a></li>
+            <li><a href="phone-cases.html">Phone Cases</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#">Homeware</a>
+          <ul class="dropdown-menu">
+            <li><a href="towels.html">Towels</a></li>
+            <li><a href="product5.html">Visor Towels</a></li>
+            <li><a href="product1.html">Blankets</a></li>
+            <li><a href="product4.html">Cushions</a></li>
+          </ul>
+        </li>
+		<li class="dropdown">
+            <a href="#">Account</a>
+			<ul class="dropdown-menu">
+				<li><a href="#">Login</a></li>
+				<li><a href="#">Register</a></li>
+				<li><a href="#">My Account</a></li>
+			</ul>
+		</li>
+		
+      </ul>
+    </nav>
     <a href="cart.html" id="cart-count-link">
       <div id="cart-icon">
         <i class="fas fa-shopping-cart"></i>
         <span id="cart-count-number">0</span>
       </div>
     </a>
+	
   </header>
 
   <main class="product-page">
     <div class="product-image">
-      <img id="mainImage" src="images/visortowel.png" alt="Main Image" />
+      <img id="mainImage" src="images/visortowels.png" alt="Main Visor Towel Image" />
       <div class="thumbnail-row">
-        <img class="thumbnail" src="images/visortowel.png" data-design="home" />
-        <img class="thumbnail" src="images/away.png" data-design="away" />
-        <img class="thumbnail" src="images/third.png" data-design="third" />
+        <img class="thumbnail" src="images/hometowel.png" data-design="home" />
+        <img class="thumbnail" src="images/awaytowel.png" data-design="away" />
+        <img class="thumbnail" src="images/thirdtowel.png" data-design="third" />
       </div>
     </div>
 
     <div class="product-options">
-      <h2 class="product-title">Visor Towels</h2>
+      <h2 class="product-title">Custom Visor Towel</h2>
 
-      <label for="design-select">Design:</label>
+      <label for="design-select">Style:</label>
       <select id="design-select">
         <option value="home">Home</option>
         <option value="away">Away</option>
         <option value="third">Third</option>
       </select>
 
-      <label for="surname">Surname:</label>
-      <input type="text" id="surname" placeholder="Enter Surname" />
+      <label for="surname-input">Surname:</label>
+      <input type="text" id="surname-input" placeholder="e.g. Smith" />
 
-      <label for="number">Number:</label>
-      <input type="text" id="number" placeholder="Enter Number" maxlength="2" />
+      <label for="number-input">Number (max 2 digits):</label>
+      <input type="text" id="number-input" maxlength="2" placeholder="e.g. 10" />
 
-      <p id="price-display">£12.00</p>
+      <p id="price-display">£5.00</p>
       <button id="add-to-cart-btn">Add to Cart</button>
     </div>
   </main>

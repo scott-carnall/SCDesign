@@ -1,48 +1,38 @@
-const towelPrices = {
-  home: 12.00,
-  away: 12.00,
-  third: 12.00
+const prices = {
+  home: 5.00,
+  away: 5.00,
+  third: 5.00
 };
 
 const designImages = {
-  home: 'images/visortowel.png',
-  away: 'images/away.png',
-  third: 'images/third.png'
+  home: 'images/hometowel.png',
+  away: 'images/awaytowel.png',
+  third: 'images/thirdtowel.png'
 };
 
 document.addEventListener('DOMContentLoaded', () => {
   const designSelect = document.getElementById('design-select');
-  const surnameInput = document.getElementById('surname');
-  const numberInput = document.getElementById('number');
+  const surnameInput = document.getElementById('surname-input');
+  const numberInput = document.getElementById('number-input');
   const priceDisplay = document.getElementById('price-display');
   const mainImage = document.getElementById('mainImage');
   const addToCartBtn = document.getElementById('add-to-cart-btn');
   const thumbnails = document.querySelectorAll('.thumbnail');
 
-  // Update the price based on selected design
-  function updatePrice() {
-    const design = designSelect.value;
-    const price = towelPrices[design];
-    priceDisplay.textContent = `£${price.toFixed(2)}`;
-  }
-
-  // Update the main image based on selected design
   function updateImage() {
     const design = designSelect.value;
     mainImage.src = designImages[design];
   }
 
-  // Add item to the cart
   function addToCart() {
     const design = designSelect.value;
-    const surname = surnameInput.value;
-    const number = numberInput.value;
-    const price = towelPrices[design];
+    const surname = surnameInput.value.trim();
+    const number = numberInput.value.trim();
+    const price = prices[design];
     const image = designImages[design];
 
-    // Store item in the cart object
     const item = {
-      name: 'Visor Towel',
+      name: `Visor Towel (${design})`,
       design,
       surname,
       number,
@@ -51,7 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
       quantity: 1
     };
 
-    // Retrieve cart, update it, and save back to localStorage
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     cart.push(item);
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -60,33 +49,24 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCartCount();
   }
 
-  // Update the cart count in the header
   function updateCartCount() {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const countEl = document.getElementById('cart-count-number');
     if (countEl) countEl.textContent = cart.length;
   }
 
-  // Event listeners
-  designSelect.addEventListener('change', () => {
-    updatePrice();
-    updateImage();
-  });
+  designSelect.addEventListener('change', updateImage);
 
-  addToCartBtn.addEventListener('click', addToCart);
-
-  // Set initial values for price and image
-  updatePrice();
-  updateImage();
-  updateCartCount();
-
-  // Event listener for thumbnails to update design
   thumbnails.forEach(thumb => {
     thumb.addEventListener('click', () => {
       const design = thumb.getAttribute('data-design');
       designSelect.value = design;
-      updatePrice();
       updateImage();
     });
   });
+
+  addToCartBtn.addEventListener('click', addToCart);
+
+  updateImage();
+  updateCartCount();
 });
