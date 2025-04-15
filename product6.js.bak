@@ -1,0 +1,109 @@
+const price = 8.00;
+
+const designImages = {
+  Stickerbomb: 'images/stickerbombphone.png',
+  Jersey: 'images/jersey.png'
+};
+
+const phoneModels = {
+  Apple: [
+    "iPhone 11", "iPhone 11 Pro", "iPhone 12", "iPhone 12 Mini", "iPhone 12 Pro", "iPhone 12 Pro Max",
+    "iPhone 13", "iPhone 13 Pro", "iPhone 13 Pro Max", "iPhone 14", "iPhone 14 Pro", "iPhone 14 Pro Max",
+    "iPhone 15", "iPhone 15 Pro", "iPhone 15 Pro Max", "iPhone 16", "iPhone 16 Pro", "iPhone 16 Pro Max"
+  ],
+  Samsung: [
+    "Samsung S20", "Samsung S20+", "Samsung S20 Ultra", "Samsung S20 FE", "Samsung S21", "Samsung S21+",
+    "Samsung S21 Ultra", "Samsung S21 FE", "Samsung S22", "Samsung S22+", "Samsung S22 Ultra", "Samsung S22 FE",
+    "Samsung S23", "Samsung S23+", "Samsung S23 Ultra", "Samsung S23 FE", "Samsung S24", "Samsung S24+",
+    "Samsung S24 Ultra", "Samsung S25", "Samsung S25+", "Samsung S25 Ultra"
+  ],
+  Google: [
+    "Google Pixel 3a", "Google Pixel 3a XL", "Google Pixel 4", "Google Pixel 4 XL", "Google Pixel 4a", "Google Pixel 4a XL",
+    "Google Pixel 5", "Google Pixel 5 XL", "Google Pixel 5a", "Google Pixel 5a XL", "Google Pixel 6", "Google Pixel 6 XL",
+    "Google Pixel 6a", "Google Pixel 6a XL", "Google Pixel 7", "Google Pixel 7 Pro", "Google Pixel 8", "Google Pixel 8 Pro",
+    "Google Pixel 9", "Google Pixel 9 Pro", "Google Pixel 9 Pro XL", "Google Pixel 9a"
+  ]
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  const designSelect = document.getElementById('design');
+  const brandSelect = document.getElementById('brand');
+  const phoneSelect = document.getElementById('phone');
+  const priceDisplay = document.querySelector('.price');
+  const mainImage = document.getElementById('mainImage');
+  const addToCartBtn = document.querySelector('button');
+  const thumbnails = document.querySelectorAll('.thumbnail');
+
+function updateMainImage() {
+  const design = designSelect.value;
+  mainImage.src = designImages[design];
+  mainImage.alt = `${design} Phone Case`;
+}
+
+  function updatePhoneModels() {
+    const brand = brandSelect.value;
+    const models = phoneModels[brand] || [];
+
+    // Clear previous options
+    phoneSelect.innerHTML = '<option value="" disabled selected>Select Phone Model</option>';
+
+    models.forEach(model => {
+      const option = document.createElement('option');
+      option.value = model;
+      option.textContent = model;
+      phoneSelect.appendChild(option);
+    });
+  }
+
+  function addToCart() {
+    const design = designSelect.value;
+    const brand = brandSelect.value;
+    const phoneModel = phoneSelect.value;
+
+    if (!brand || !phoneModel) {
+      alert("Please select both a phone brand and model.");
+      return;
+    }
+
+    const item = {
+      name: 'Custom Phone Case',
+      design,
+      phoneModel,
+      price,
+      image: designImages[design],
+      quantity: 1
+    };
+
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push(item);
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    alert(`${item.name} added to cart!`);
+    updateCartCount();
+  }
+
+}
+
+  function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const countEl = document.getElementById('cart-count-number');
+    if (countEl) countEl.textContent = cart.length;
+  }
+
+  // Thumbnail click = change design
+  thumbnails.forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      const src = thumb.src;
+      const design = src.includes("stickerbomb") ? "Stickerbomb" : "Jersey";
+      designSelect.value = design;
+      updateMainImage();
+    });
+  });
+
+  designSelect.addEventListener('change', updateMainImage);
+  brandSelect.addEventListener('change', updatePhoneModels);
+  addToCartBtn.addEventListener('click', addToCart);
+
+  // Init
+  updateMainImage();
+  updateCartCount();

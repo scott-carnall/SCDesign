@@ -18,12 +18,27 @@ function removeFromCart(index) {
 
 function renderCartPage() {
   const cartContainer = document.getElementById('cart-items');
+  const paypalContainer = document.getElementById('paypal-button-container');
+  const totalContainer = document.getElementById('grand-total');
+
   if (!cartContainer) return;
 
   const cart = getCart();
   cartContainer.innerHTML = ''; // Clear before render
 
   let total = 0;
+
+  // Check if the cart is empty
+  if (!cart || cart.length === 0) {
+    cartContainer.innerHTML = `<p class="empty-cart-message">Your cart is empty</p>`;
+    if (paypalContainer) paypalContainer.style.display = 'none';  // Hide PayPal button
+    if (totalContainer) totalContainer.style.display = 'none'; // Hide total section
+    return; // Exit function if cart is empty
+  }
+
+  // If there are items in the cart, show PayPal checkout and total container
+  if (paypalContainer) paypalContainer.style.display = 'flex';  // Show PayPal button
+  if (totalContainer) totalContainer.style.display = 'block'; // Show total section
 
   cart.forEach((item, index) => {
     const div = document.createElement('div');
@@ -44,7 +59,7 @@ function renderCartPage() {
         Price: £${item.price.toFixed(2)}<br />
         <label>Qty:
           <select data-index="${index}" class="qty-select">
-            ${[1,2,3,4,5].map(qty => `
+            ${[1, 2, 3, 4, 5].map(qty => `
               <option value="${qty}" ${item.quantity == qty ? 'selected' : ''}>${qty}</option>
             `).join('')}
           </select>
@@ -55,42 +70,28 @@ function renderCartPage() {
     cartContainer.appendChild(div);
   });
 
-  
-
-  attachQtyListeners();
-  
-  function attachQtyListeners() {
-  document.querySelectorAll('.qty-select').forEach(select => {
-    select.addEventListener('change', (e) => {
-      const index = e.target.getAttribute('data-index');
-      const cart = getCart();
-      cart[index].quantity = parseInt(e.target.value, 10);
-      localStorage.setItem('cart', JSON.stringify(cart));
-      renderCartPage();
-      updateCartCount();
-    });
-  });
-}
-
   // Grand total
   const totalEl = document.createElement('div');
   totalEl.className = 'cart-total';
-  totalEl.textContent = `Grand Total: £${total.toFixed(2)}`;
-  cartContainer.appendChild(totalEl);
-
   totalEl.innerHTML = `<h3>Grand Total: £${total.toFixed(2)}</h3>`;
-
-// PayPal container
-  const paypalContainer = document.createElement('div');
-  paypalContainer.id = 'paypal-button-container';
-  cartContainer.appendChild(paypalContainer);
+  
+  // Wrapping grand total and PayPal button in a container
+  const rightContainer = document.createElement('div');
+  rightContainer.className = 'right-container';
+  
+  rightContainer.appendChild(totalEl);
+  cartContainer.appendChild(rightContainer);
 
   // Render PayPal button
   renderPayPalButton(total);
 }
 
 function renderPayPalButton(total) {
-  if (typeof paypal === "undefined") return;
+  const paypalContainer = document.getElementById('paypal-button-container');
+  
+  // Only render PayPal button if PayPal script is loaded
+  if (typeof paypal === "undefined" || !paypalContainer) return;
+
   document.getElementById('paypal-button-container').innerHTML = '';
 
   paypal.Buttons({
@@ -106,13 +107,14 @@ function renderPayPalButton(total) {
     onApprove: function (data, actions) {
       return actions.order.capture().then(function (details) {
         alert('Transaction completed by ' + details.payer.name.given_name);
-        localStorage.removeItem('cart');
+        localStorage.removeItem('cart'); // Clear cart after successful payment
         updateCartCount();
-        renderCartPage();
+        renderCartPage(); // Re-render the cart page
       });
     }
   }).render('#paypal-button-container');
 }
+
 
 window.addEventListener('DOMContentLoaded', () => {
   updateCartCount();

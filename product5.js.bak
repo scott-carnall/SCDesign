@@ -27,10 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Update the main image based on selected design
-  function updateImage() {
-    const design = designSelect.value;
-    mainImage.src = designImages[design];
-  }
+function updateImage() {
+  const design = designSelect.value;
+  mainImage.src = designImages[design] || 'images/visortowels.png';
+}
 
   // Add item to the cart
   function addToCart() {
@@ -70,4 +70,23 @@ document.addEventListener('DOMContentLoaded', () => {
   // Event listeners
   designSelect.addEventListener('change', () => {
     updatePrice();
-    updateImage
+    updateImage();
+  });
+
+  addToCartBtn.addEventListener('click', addToCart);
+
+  // Set initial values for price and image
+  updatePrice();
+  updateImage();
+  updateCartCount();
+
+  // Event listener for thumbnails to update design
+  thumbnails.forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      const design = thumb.getAttribute('data-design');
+      designSelect.value = design;
+      updatePrice();
+      updateImage();
+    });
+  });
+});
